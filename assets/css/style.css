@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Tektur", sans-serif;
+}
+
+:root {
+  /* dark / dark*/
+  --dark: rgb(44, 51, 51);
+  --greeny: rgb(46, 79, 79);
+  --turq: rgb(14, 131, 136);
+  --light: rgb(203, 228, 222);
+}
+
+/* dark mode */
+.dark {
+  background-color: var(--dark);
+  color: var(--light);
+}
+/* light mode */
+.light {
+  background-color: var(--light);
+  color: var(--dark);
+}
+.light .clock {
+  box-shadow: 0 0 10px 2px black;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.clock {
+  width: 400px;
+  height: 400px;
+  background-color: rgba(245, 245, 245, 0.446);
+  border-radius: 50%;
+  border: 8px solid black;
+  box-shadow: 0 0 10px 2px white;
+  position: relative;
+}
+
+.clock .number {
+  --rotation: 0;
+  color: red;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 32px;
+  transform: rotate(var(--rotation));
+}
+
+.clock .number1 {
+  --rotation: 30deg;
+}
+.clock .number2 {
+  --rotation: 60deg;
+}
+.clock .number3 {
+  --rotation: 90deg;
+}
+.clock .number4 {
+  --rotation: 120deg;
+}
+.clock .number5 {
+  --rotation: 150deg;
+}
+.clock .number6 {
+  --rotation: 180deg;
+}
+.clock .number7 {
+  --rotation: 210deg;
+}
+.clock .number8 {
+  --rotation: 240deg;
+}
+.clock .number9 {
+  --rotation: 270deg;
+}
+.clock .number10 {
+  --rotation: 300deg;
+}
+.clock .number11 {
+  --rotation: 330deg;
+}
+
+.clock .hand {
+  --rotation: 0;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  z-index: 10;
+  transform-origin: bottom;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+
+.clock::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  z-index: 11;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.clock .second {
+  width: 3px;
+  height: 40%;
+  background-color: red;
+}
+
+.clock .minute {
+  width: 7px;
+  height: 38%;
+  background-color: black;
+}
+
+.clock .hour {
+  width: 12px;
+  height: 28%;
+  background-color: black;
+}
+
+#displayDate {
+  color: var(--orange);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--turq);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px --turq;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.row {
+  margin: 20px;
+  display: flex;
+}
+.col {
+  margin: 20px;
+  font-size: 14px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+@media screen and (max-width: 600px) {
+  #displayDate {
+    display: none;
+  }
+}
